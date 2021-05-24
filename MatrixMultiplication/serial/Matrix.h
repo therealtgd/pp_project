@@ -2,18 +2,20 @@
 
 #include <iostream>
 #include <fstream>
+#include <vector>
 using namespace std;
 
 class Matrix
 {
-	int rows;
-	int cols;
+	vector<vector<int>> matrix;
+	int rows, cols;
 public:
-	int* matrix;
 	Matrix();
 	Matrix(int _rows, int _cols);
-	~Matrix();
+	vector<vector<int>> getMatrix();
+	void addValue(const int row, const int col, const int val);
+	int getElement(const int row, const int col);
+	int getNumRows();
+	int getNumCols();
 	void print();
-	int numRows();
-	int numCols();
 };

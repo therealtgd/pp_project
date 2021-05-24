@@ -5,35 +5,49 @@
 
 Matrix::Matrix() : rows(0), cols(0)
 {
-	matrix = (int*)malloc(sizeof(int) * (rows * cols));
 }
 
 Matrix::Matrix(int _rows, int _cols) : rows(_rows), cols(_cols)
 {
-	matrix = (int*)malloc(sizeof(int) * (rows * cols));
+	for (int i = 0; i < rows; i++) {
+		vector<int> v;
+		for (int j = 0; j < cols; j++) {
+			v.push_back(0);
+		}
+		matrix.push_back(v);
+	}
 }
 
-Matrix::~Matrix()
+vector<vector<int>> Matrix::getMatrix()
 {
-	free(this->matrix);
+	return matrix;
+}
+
+void Matrix::addValue(const int row, const int col, const int val)
+{
+	matrix[row][col] = val;
+}
+
+int Matrix::getElement(const int row, const int col) {
+	return matrix[row][col];
+}
+
+int Matrix::getNumRows()
+{
+	return rows;
+}
+
+int Matrix::getNumCols()
+{
+	return cols;
 }
 
 void Matrix::print()
 {
-	for (int i = 0; i < this->rows; i++) {
-		for (int j = 0; j < this->cols; j++)
-			cout << matrix[i * this->cols + j] << "\t";
+	for (auto& row : matrix) {
+		for (auto& col : row)
+			cout << col << " ";
 		cout << endl;
 	}
 	cout << endl;
-}
-
-int Matrix::numRows()
-{
-	return this->rows;
-}
-
-int Matrix::numCols()
-{
-	return this->cols;
 }

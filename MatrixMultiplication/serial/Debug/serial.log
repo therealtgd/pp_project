@@ -1,1 +1,8 @@
-﻿
+﻿Matrix.cpp(1,9): : warning : #pragma once in main file [-Wpragma-once-outside-header]
+  #pragma once
+          ^
+  1 warning generated.
+utils.cpp(41,1): : warning : non-void function does not return a value in all control paths [-Wreturn-type]
+  }
+  ^
+  1 warning generated.

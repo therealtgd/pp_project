@@ -26,8 +26,8 @@ void printUsage()
 }
 
 
-// argv[1] - in file 1 name
-// argv[2] - in file 2 name
+// argv[1] - in file 1 name (matrix 1)
+// argv[2] - in file 2 name (matrix 2)
 // argv[3] - out file name
 int mainSerial(int argc, char* argv[])
 {
@@ -51,7 +51,7 @@ int mainSerial(int argc, char* argv[])
     // init matrix
     Matrix* m1 = initMatrix(inFileName1);
     Matrix* m2 = initMatrix(inFileName2);
-    Matrix resMatrix(m1->numRows(), m2->numCols());
+    Matrix resMatrix(m1->getNumRows(), m2->getNumCols());
     
     // run program
     tick_count startTime = tick_count::now();
