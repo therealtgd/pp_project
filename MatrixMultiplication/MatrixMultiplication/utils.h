@@ -10,9 +10,9 @@ using namespace std;
 
 Matrix* initMatrix(char* inFileName);
 
-void matrixMultiplicationParallel(Matrix& outM, Matrix* m1, Matrix* m2);
-
+void matrixMultiplicationSerial(Matrix& outM, Matrix* m1, Matrix* m2);
+Matrix parallelMatrixMultiply(Matrix c, Matrix* a, Matrix* b);
 bool check_results(int* matrix1, int* matrix2, int m, int n);
 
 
-#endif /* UTILS_H */#pragma once
+#endif /* UTILS_H */

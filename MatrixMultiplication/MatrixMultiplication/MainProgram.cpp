@@ -10,7 +10,7 @@ using namespace tbb;
 // prints programs title
 void printTitle()
 {
-    cout << "**********Matrix Multiplication serial**********";
+    cout << "**********Matrix Multiplication parallel**********";
     cout << endl;
     cout << endl;
 }
@@ -51,11 +51,11 @@ int mainParallel(int argc, char* argv[])
     // init matrix
     Matrix* m1 = initMatrix(inFileName1);
     Matrix* m2 = initMatrix(inFileName2);
-    Matrix resMatrix(m1->numRows(), m2->numCols());
+    Matrix resMatrix(m1->getNumRows(), m2->getNumCols());
 
     // run program
     tick_count startTime = tick_count::now();
-    matrixMultiplicationParallel(resMatrix, m1, m2);
+    resMatrix = parallelMatrixMultiply(resMatrix, m1, m2);
     tick_count endTime = tick_count::now();
 
     m1->print();
