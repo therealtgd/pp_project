@@ -16,5 +16,5 @@ def save_to_file(filename, arr):
         f.write(s)
 
 
-save_to_file('3x2_1.txt', generate(3, 2))
+save_to_file('50x50_1.txt', generate(50, 50))
 

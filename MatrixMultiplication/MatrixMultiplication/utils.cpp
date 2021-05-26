@@ -9,13 +9,13 @@
 using namespace tbb;
 
 ifstream openInFile(char* fileName);
-Matrix* initMatrix(char* inFileName)
+Matrix initMatrix(char* inFileName)
 {
 	ifstream inFile = openInFile(inFileName);
 
 	int rows, cols;
 	inFile >> rows >> cols;
-	Matrix* m = new Matrix(rows, cols);
+	Matrix m(rows, cols);
 	string line;
 	int i = 0;
 	while (getline(inFile, line))
@@ -27,7 +27,7 @@ Matrix* initMatrix(char* inFileName)
 			int j = 0;
 			while (ss >> val)
 			{
-				m->addValue(i, j, val);
+				m.addValue(i, j, val);
 				j++;
 			}
 			i++;
