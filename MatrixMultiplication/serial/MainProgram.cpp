@@ -1,7 +1,8 @@
 #include "MainProgram.h"
+#include "MatrixMultiplier.h"
+#include "MatrixLoader.h"
 #include <iostream>
 #include <stdio.h>
-#include "utils.h"
 #include "tbb/tick_count.h"
 
 using namespace std;
@@ -49,8 +50,8 @@ int mainSerial(int argc, char* argv[])
     outFileName = argv[3];
     
     // init matrix
-    Matrix* m1 = initMatrix(inFileName1);
-    Matrix* m2 = initMatrix(inFileName2);
+    Matrix* m1 = loadMatrix(inFileName1);
+    Matrix* m2 = loadMatrix(inFileName2);
     Matrix resMatrix(m1->getNumRows(), m2->getNumCols());
     
     // run program

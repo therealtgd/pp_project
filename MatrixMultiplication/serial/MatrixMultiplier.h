@@ -8,7 +8,6 @@
 
 using namespace std;
 
-Matrix* initMatrix(char* inFileName);
 
 void matrixMultiplicationSerial(Matrix& outM, Matrix* m1, Matrix* m2);
 

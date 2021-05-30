@@ -143,12 +143,14 @@
     <ClCompile Include="MainProgram.cpp" />
     <ClCompile Include="Matrix.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="utils.cpp" />
+    <ClCompile Include="MatrixLoader.cpp" />
+    <ClCompile Include="MatrixMultiplier.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="MainProgram.h" />
     <ClInclude Include="Matrix.h" />
-    <ClInclude Include="utils.h" />
+    <ClInclude Include="MatrixLoader.h" />
+    <ClInclude Include="MatrixMultiplier.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
