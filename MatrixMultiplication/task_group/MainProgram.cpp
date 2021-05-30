@@ -51,7 +51,12 @@ int mainTG(int argc, char* argv[])
     // init matrix
     Matrix m1 = initMatrix(inFileName1);
     Matrix m2 = initMatrix(inFileName2);
+
+    //validate matrix dimensions
+    
+
     Matrix resMatrix(m1.getNumRows(), m2.getNumCols());
+
 
     // run program
     tick_count startTime = tick_count::now();

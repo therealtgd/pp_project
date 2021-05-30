@@ -9,13 +9,13 @@
 using namespace tbb;
 
 ifstream openInFile(char* fileName);
-Matrix initMatrix(char* inFileName)
+Matrix* initMatrix(char* inFileName)
 {
 	ifstream inFile = openInFile(inFileName);
 
 	int rows, cols;
 	inFile >> rows >> cols;
-	Matrix m(rows, cols);
+	Matrix* m = new Matrix(rows, cols);
 	string line;
 	int i = 0;
 	while (getline(inFile, line))
@@ -27,7 +27,7 @@ Matrix initMatrix(char* inFileName)
 			int j = 0;
 			while (ss >> val)
 			{
-				m.addValue(i, j, val);
+				m->addValue(i, j, val);
 				j++;
 			}
 			i++;
@@ -64,9 +64,11 @@ struct MatrixMultiplyBody
 	}
 };
 
-
+void validateMatrixDimensions(Matrix a, Matrix b);
 Matrix parallelMatrixMultiply(Matrix c, Matrix* a, Matrix* b)
 {
+	validateMatrixDimensions((*a), (*b));
+
 	MatrixMultiplyBody body;
 	body.my_a = a;
 	body.my_b = b;
@@ -75,4 +77,12 @@ Matrix parallelMatrixMultiply(Matrix c, Matrix* a, Matrix* b)
 	parallel_for(blocked_range2d<size_t>(0, a->getNumRows(), 16, 0, b->getNumCols(), 32),
 		body, auto_partitioner());
 	return c;
+}
+
+void validateMatrixDimensions(Matrix a, Matrix b)
+{
+	if (a.getNumCols() != b.getNumRows()) {
+		cout << "Error.\nThe number of columns of the 1st matrix must equal to the number of rows of the 2nd.";
+		exit(0);
+	}
 }

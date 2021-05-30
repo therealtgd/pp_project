@@ -45,9 +45,20 @@ ifstream openInFile(char* fileName) {
 		return file;
 }
 
+void validateMatrixDimensions(Matrix a, Matrix b);
 void matrixMultiplicationParallel(Matrix& c, Matrix& a, Matrix& b, int cutOff);
 void matrixMultiplicationTG(Matrix& c, Matrix& a, Matrix& b) {
-	matrixMultiplicationParallel(c, a, b, 0);
+	validateMatrixDimensions(a, b);
+	if (a.getNumCols() == b.getNumRows())
+		matrixMultiplicationParallel(c, a, b, 0);
+}
+
+void validateMatrixDimensions(Matrix a, Matrix b)
+{
+	if (a.getNumCols() != b.getNumRows()) {
+		cout << "Error.\nThe number of columns of the 1st matrix must equal to the number of rows of the 2nd.";
+		exit(0);
+	}
 }
 
 

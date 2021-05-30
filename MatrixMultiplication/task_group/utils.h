@@ -9,7 +9,6 @@
 using namespace std;
 
 Matrix initMatrix(char* inFileName);
-
 void matrixMultiplicationTG(Matrix& c, Matrix& a, Matrix& b);
 
 
