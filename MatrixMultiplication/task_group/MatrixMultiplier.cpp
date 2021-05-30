@@ -85,11 +85,54 @@ void matrixMultiplicationParallel(Matrix& c, Matrix& a, Matrix& b, int cutOff)
 		parallelForTask(res, &c, &t);
 	}
 
-	//}
-
+	 
 }
 
-bool checkDimensionRequirements(Matrix* a, Matrix* b) {
+void multiplyFC(Matrix& c, Matrix& a, Matrix& b, int row, int col);
+void matrixMultiplicationTGFirstCase(Matrix& c, Matrix& a, Matrix& b)
+{
+	task_group g;
+	// creates tasks that calculate only 1 element of result matrix
+	for (int i = 0; i < a.getNumRows(); ++i) {
+		for (int j = 0; j < b.getNumCols(); ++j)
+			g.run([&, i, j] { multiplyFC(c, a, b, i, j); });
+	}
+	g.wait();
+}
+
+void multiplyFC(Matrix& c, Matrix& a, Matrix& b, int row, int col) {
+	float sum = 0;
+	// creates tasks that calculate only 1 row of result matrix
+	for (int i = 0; i < a.getNumCols(); ++i) {
+		sum += a.getElement(row, i) * b.getElement(i, col);
+	}
+	c.addValue(row, col, sum);
+}
+
+void multiplySC(Matrix& c, Matrix& a, Matrix& b, int row);
+void matrixMultiplicationTGSecondCase(Matrix& c, Matrix& a, Matrix& b)
+{
+	task_group g;
+	for (int i = 0; i < a.getNumRows(); ++i) {
+		g.run([&, i] { multiplySC(c, a, b, i); });
+	}
+	g.wait();
+}
+
+void multiplySC(Matrix& c, Matrix& a, Matrix& b, int row) {
+	for (int i = 0; i < a.getNumRows(); ++i) {
+		for (int j = 0; j < b.getNumCols(); ++j) {
+			float sum = 0;
+			for (int k = 0; k < a.getNumCols(); ++k)
+				sum += a.getElement(i, k) * b.getElement(k, j);
+			c.addValue(i, j, sum);
+		}
+	}
+}
+
+
+bool checkDimensionRequirements(Matrix* a, Matrix* b)
+{
 	return a->getNumRows() <= 4 || a->getNumCols() <= 4
 		|| b->getNumRows() <= 4 || b->getNumCols() <= 4;
 }

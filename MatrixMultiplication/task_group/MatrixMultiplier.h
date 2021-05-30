@@ -9,6 +9,9 @@
 using namespace std;
 
 void matrixMultiplicationTG(Matrix& c, Matrix& a, Matrix& b);
+void matrixMultiplicationTGFirstCase(Matrix& c, Matrix& a, Matrix& b);
+void matrixMultiplicationTGSecondCase(Matrix& c, Matrix& a, Matrix& b);
+
 
 
 

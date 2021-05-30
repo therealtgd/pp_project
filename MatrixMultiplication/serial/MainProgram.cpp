@@ -77,9 +77,9 @@ int mainSerial(int argc, char* argv[])
         matrixMultiplicationSerial(resMatrix, m1, m2);
         tick_count endTime = tick_count::now();
 
-      /*  m1->print();
+        m1->print();
         m2->print();
-        resMatrix.print();*/
+        resMatrix.print();
         cout << endl << "Execution time: " << (endTime - startTime).seconds() * 1000 << "ms." << endl;
     
         // save exec time to output file
