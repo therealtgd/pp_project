@@ -31,7 +31,7 @@ Matrix parallelMatrixMultiply(Matrix c, Matrix* a, Matrix* b)
 	body.my_a = a;
 	body.my_b = b;
 	body.my_c = &c;
-
+	//parallel_for(blocked_range2d<size_t>(0, a->getNumRows(), 0, b->getNumCols()), body, auto_partitioner());
 	parallel_for(blocked_range2d<size_t>(0, a->getNumRows(), 16, 0, b->getNumCols(), 32),
 		body, auto_partitioner());
 	return c;

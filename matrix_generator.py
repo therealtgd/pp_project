@@ -16,5 +16,14 @@ def save_to_file(filename, arr):
         f.write(s)
 
 
-save_to_file('50x50_1.txt', generate(50, 50))
+
+def run():
+    while True:
+        rows = input("Rows: ")
+        cols = input("Cols: ")
+        file_index = input("File index: ")
+        filename = ""+rows+"x"+cols+"_"+file_index+".txt"
+        save_to_file(filename, generate(int(rows), int(cols)))
+
+run()
 

@@ -10,8 +10,7 @@ void validateMatrixDimensions(Matrix a, Matrix b);
 void matrixMultiplicationParallel(Matrix& c, Matrix& a, Matrix& b, int cutOff);
 void matrixMultiplicationTG(Matrix& c, Matrix& a, Matrix& b) {
 	validateMatrixDimensions(a, b);
-	if (a.getNumCols() == b.getNumRows())
-		matrixMultiplicationParallel(c, a, b, 0);
+	matrixMultiplicationParallel(c, a, b, 0);
 }
 
 void validateMatrixDimensions(Matrix a, Matrix b)
