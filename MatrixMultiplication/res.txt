@@ -21,14 +21,3 @@ serial 250 250 354.277
 serial 750 750 10804.6
 serial 750 750 10799.6
 serial 750 750 10887.4
-
-serial 5 5 0.0457
-serial 5 5 0.0605
-serial 5 5 0.2026
-serial 5 5 0.0623
-serial 5 5 0.0526
-serial 5 5 0.0207
-serial 5 5 0.0404
-serial 5 5 0.0338
-serial 5 5 0.0362
-serial 5 5 0.0311

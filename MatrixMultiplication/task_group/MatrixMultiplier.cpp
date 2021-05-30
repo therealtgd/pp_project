@@ -102,7 +102,6 @@ void matrixMultiplicationTGFirstCase(Matrix& c, Matrix& a, Matrix& b)
 
 void multiplyFC(Matrix& c, Matrix& a, Matrix& b, int row, int col) {
 	float sum = 0;
-	// creates tasks that calculate only 1 row of result matrix
 	for (int i = 0; i < a.getNumCols(); ++i) {
 		sum += a.getElement(row, i) * b.getElement(i, col);
 	}
