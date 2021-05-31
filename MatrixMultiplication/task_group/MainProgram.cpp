@@ -75,9 +75,9 @@ int mainTG(int argc, char* argv[])
 
         // run program
         tick_count startTime = tick_count::now();
-        matrixMultiplicationTGFirstCase(resMatrix, m1, m2);
+        //matrixMultiplicationTGFirstCase(resMatrix, m1, m2);
         //matrixMultiplicationTGSecondCase(resMatrix, m1, m2);
-        //matrixMultiplicationTG(resMatrix, m1, m2);
+        matrixMultiplicationTG(resMatrix, m1, m2);
         tick_count endTime = tick_count::now();
 
         /*m1.print();

@@ -1,8 +1,1 @@
-﻿  utils.cpp
-  Generating code
-C:\Users\Vladan\Documents\university\semestar 4\PP\vjezbe\projekat\moj_projekat\MatrixMultiplication\serial\utils.cpp(31): warning C4715: 'openInFile': not all control paths return a value
-  4 of 208 functions ( 1.9%) were compiled, the rest were copied from previous compilation.
-    0 functions were new in current compilation
-    1 functions had inline decision re-evaluated but remain unchanged
-  Finished generating code
-  serial.vcxproj -> C:\Users\Vladan\Documents\university\semestar 4\PP\vjezbe\projekat\moj_projekat\MatrixMultiplication\Release\serial.exe
+﻿  serial.vcxproj -> C:\Users\Vladan\Documents\university\semestar 4\PP\vjezbe\projekat\moj_projekat\MatrixMultiplication\Release\serial.exe

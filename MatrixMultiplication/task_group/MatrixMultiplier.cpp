@@ -112,6 +112,7 @@ void multiplySC(Matrix& c, Matrix& a, Matrix& b, int row);
 void matrixMultiplicationTGSecondCase(Matrix& c, Matrix& a, Matrix& b)
 {
 	task_group g;
+	// creates tasks that calculate only 1 row of result matrix
 	for (int i = 0; i < a.getNumRows(); ++i) {
 		g.run([&, i] { multiplySC(c, a, b, i); });
 	}
@@ -119,14 +120,21 @@ void matrixMultiplicationTGSecondCase(Matrix& c, Matrix& a, Matrix& b)
 }
 
 void multiplySC(Matrix& c, Matrix& a, Matrix& b, int row) {
-	for (int i = 0; i < a.getNumRows(); ++i) {
+	for (int i = 0; i < b.getNumCols(); ++i)
+	{
+		float sum = 0;
+		for (int j = 0; j < a.getNumCols(); ++j)
+			sum += a.getElement(row, j) * b.getElement(j, i);
+		c.addValue(row, i, sum);
+	}
+	/*for (int i = 0; i < a.getNumRows(); ++i) {
 		for (int j = 0; j < b.getNumCols(); ++j) {
 			float sum = 0;
 			for (int k = 0; k < a.getNumCols(); ++k)
 				sum += a.getElement(i, k) * b.getElement(k, j);
 			c.addValue(i, j, sum);
 		}
-	}
+	}*/
 }
 
 
